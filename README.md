@@ -5,7 +5,6 @@ Code an ERC-20 Token on the Ethereum blockchain sell it with a crowd sale (ICO) 
 
   - Truffle v5.0.4
 
-  
 ### Links:
 
   - Course: 
