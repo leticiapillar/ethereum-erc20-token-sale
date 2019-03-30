@@ -30,4 +30,11 @@ contract ERC20TokenSale {
         emit Sell(msg.sender, _numberOfTokens);
     }
 
+    function endSale() public {
+        require(msg.sender == admin, "must be admin");
+        require(tokenContract.transfer(admin, tokenContract.balanceOf(address(this))));
+        //selfdestruct(admin); //ERC20TokenSale.sol:36:22: TypeError: Invalid type for argument in function call. Invalid implicit conversion from address to address payable requested.
+        selfdestruct(msg.sender);
+    }
+
 }
