@@ -108,4 +108,7 @@ blockchain/history
 yarn.lock
 package-lock.json
 
+# mnemonic secret
+.secret
+
 # End of https://www.gitignore.io/api/solidity,soliditytruffle

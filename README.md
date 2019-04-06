@@ -8,9 +8,15 @@ Code an ERC-20 Token on the Ethereum blockchain sell it with a crowd sale (ICO) 
   - lite-server v2.4.0 (https://github.com/johnpapa/lite-server)
   - Bootstrap v4.3.1 (https://getbootstrap.com/)
 
+  - if return null where using MetaMask plugin, observe the Setting > Security > Privacy mode must off
+  console error: get coinbase account:  null
+  https://github.com/MetaMask/metamask-extension/issues/5716
+
+
 ### Run app:
   npm run dev
   http://localhost:3000/
+
 
 ### Links:
 
@@ -23,14 +29,40 @@ Code an ERC-20 Token on the Ethereum blockchain sell it with a crowd sale (ICO) 
     https://theethereum.wiki/w/index.php/ERC20_Token_Standard
 
 
+### Infura:
+  https://infura.io
+  https://truffleframework.com/docs/truffle/reference/configuration  
+  https://truffleframework.com/tutorials/using-infura-custom-provider  
+
+
+### Mnemonic Code Converter:
+  - Generate mnemonic code to connect MetaMask
+    https://iancoleman.io/bip39/
+  
+  - Use an ether faucet
+    https://faucet.metamask.io/
+
 
 ### Provision tokens:
-  - Provision 75% of all tokens to the token sale
-  > truffle console
+  - Development environment
+    > truffle console
+  - Ropsten environment
+    > truffle console --network ropsten
 
-  ERC20TokenSale.deployed().then(function (i) { tokenSale = i; })
-  ERC20Token.deployed().then(function (i) { token = i; })
-  tokensAvailable = 750000
-  web3.eth.getAccounts().then(function (acc) { admin = acc[0]; })
-  token.transfer(tokenSale.address, tokensAvailable, { from: admin })
-  token.balanceOf(tokenSale.address).then(function (b) { balance = b; })
+  - Provision 75% of all tokens to the token sale
+    web3.eth.getAccounts().then(function (acc) { admin = acc[0]; })
+    admin
+    var tokensAvailable = 750000
+    tokensAvailable
+
+    ERC20TokenSale.deployed().then(function (i) { tokenSale = i; })
+    tokenSale
+    ERC20Token.deployed().then(function (i) { token = i; })
+    token
+
+    token.transfer(tokenSale.address, tokensAvailable, { from: admin })
+    
+    token.balanceOf(tokenSale.address).then(function (b) { balance = b; })
+    balance.toNumber()
+
+
